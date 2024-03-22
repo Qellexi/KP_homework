@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Types</title>
+</head>
+<body>
+  <div id="dataTypes"></div>
+  <script>
+    const age = 30;
+    const bigNumber = 1234567890123456789012345678901234567890n;
+    const name = "John";
+    const isLogged = true;
+    const emptyValue = null;
+    const uniqueID = Symbol('description');
+    let person = {
+      name: 'Alice',
+      age: 30,
+      sayHello: function() {
+        console.log('Hello, ' + this.name);
+      }
+    };
+    let myArray = [1, 2, 3];
+    function capitalize(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    const greeting = `Привіт, ${capitalize(name)}!`;
+    console.log('Тип undefined:', typeof undefined); // "undefined"
+    console.log('Тип null:', typeof null); // "object"
+    console.log('Тип boolean:', typeof isLogged); // "boolean"
+    console.log('Тип number:', typeof age); // "number"
+    console.log('Тип bigint:', typeof bigNumber); // "bigint"
+    console.log('Тип string:', typeof name); // "string"
+    console.log('Тип symbol:', typeof uniqueID); // "symbol"
+
+    // Складні (об'єктні) типи
+    console.log('Тип object (звичайний об’єкт):', typeof person); // "object"
+    console.log('Тип object (масив):', typeof myArray); // "object"
+    console.log('Тип object (функція):', typeof capitalize(name)); // "function"
+
+    // для null
+    console.log('Тип null:', typeof emptyValue); // "null"
+
+  </script>
+</body>
+</html>
