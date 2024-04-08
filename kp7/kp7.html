@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //запитати у користувача рік народження;
+    //запитати в нього, в якому місті він живе;
+    //запитати його улюблений вид спорту.
+    //При натисканні на ОК показуємо вікно, де має бути відображена наступна інформація:
+    //його вік;
+    //якщо користувач вкаже Київ, Вашингтон чи Лондон, то показати йому повідомлення -
+    // "Ти живеш у столиці..." і на місце точок підставляємо країну, столицею якої є місто.
+    // Інакше показуємо йому “ти живеш у місті…”, де місце точок – введене місто.
+    function askInfo(request, category){
+        const input = prompt(request);
+        switch (input) {
+            case null:
+                alert(`It is a pity that you do not want to enter your ${category}`);
+                return null;
+            case '': // nothing entered
+                alert(`You did not enter ${category}. Please, try again!`);
+                return askInfo(request, category);
+            default: // if info is entered
+                return input.trim();
+        }
+    }
+    let date = askInfo("Enter your date of birth (yyyy-mm-dd): ", 'date of birth');
+    let city = askInfo("Enter your city of birth: ", "city");
+    let t_sport = askInfo("Enter your favourite kind of sport: ", "kind of sport");
+    // Перевіряємо, чи користувач ввів дату народження
+    if (date) {
+        let currentYear = 2024;
+        let birthYear = new Date(date).getFullYear();
+        let age = currentYear - birthYear;
+        alert(`Hello, your age is: ${age}`);
+    }
+    //////////////////////////////////////////////////////
+    let c_city_gb = "London";
+    let c_city_usa = "Washington";
+    let c_city_ua = "Kyjiw";
+    let country;
+    // Перевіряємо, чи користувач ввів місто
+    if (city) {
+        if(city===c_city_gb||c_city_usa||c_city_ua){
+            if (city===c_city_ua){
+                country = "Ukraine";
+            }else if(city === c_city_gb){
+                country = "England"
+            }else{
+                country = "USA"
+            }
+            alert(`You are living in the capital of ${country}`)
+        }else{
+            alert(`You live in ${city} city`)
+        }
+    }
+    //////////////////////////////////////////////////////
+    if(t_sport){
+        const sportsChampions = {
+            'football': 'Lionel Messi',
+            'tennis': 'Rafael Nadal Parera',
+            'basketball': 'LeBron Raymone James Sr. (King James)'
+        };
+        if (sportsChampions[t_sport.toLowerCase()]) {
+            alert(`Wow! It is cool! You want to be as ${sportsChampions[t_sport.toLowerCase()]}?`);
+        } else {
+            alert('Wow! It is cool!');
+        }
+    }
+
+</script>
+</body>
+</html>
