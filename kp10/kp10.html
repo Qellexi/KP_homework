@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Один долар коштує 26 гривень. Вивести дані з розрахунком вартості 10, 20, 30... 100 доларів
+    let output = '';
+    let i=10;
+    let x_rate=26;
+    for (i; i <= 100; i += 10) {
+        output += x_rate*i + " ";
+    }
+    console.log(output.trim());
+
+    while (i < 100) {
+        output += x_rate*i + " ";
+        i += 10;
+    }
+    console.log(output.trim());
+</script>
+</body>
+</html>
