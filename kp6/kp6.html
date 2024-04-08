@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //Дано тризначне число, яке надае користувач, потрибно визначити:
+  //Чи правда, що всі цифри однакові?
+  //Чи є серед цифр цифри однакові?
+  function check(number){
+      if (number.length === 3) {
+          let digits = number.split('');
+          let allSame = digits.every(digit => digit === digits[0]);// Перевірка чи всі цифри однакові
+          let anySame = new Set(digits).size < digits.length; //set вилаляє дуплікати
+          alert(`Hello, is true that in ${number} all numbers are same? ${allSame}`);
+          alert(`Are there any same digits in ${number}? ${anySame}`);
+
+      } else {
+          alert("Oh no! You didn`t enter three-digit number. Try again")
+      }
+  }
+  while(true){
+    const number = prompt("Enter your three-digit number: ");
+    check(number)
+  }
+
+</script>
+
+</body>
+</html>
