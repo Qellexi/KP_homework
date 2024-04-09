@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом.
+  //'func(" hello world", ['l', 'd'])' поверне нам "heo wor". Вихідний рядок та символи для видалення задає користувач.
+  function func(arg1, arg2){
+    //let list_ch = Object.assign([], arg2);
+
+    for (let i =0; i<arg2.length; i++){
+      //alert(arg2[i]);
+      arg1= arg1.split(arg2[i]).join("");
+    }
+    return arg1;
+  }
+  let message = prompt("Enter your message: ")
+  let del_l = prompt("What letters would you like to delete: ")
+  console.log(func(message, del_l))
+</script>
+</body>
+</html>
