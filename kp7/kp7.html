@@ -44,18 +44,20 @@
     let country;
     // Перевіряємо, чи користувач ввів місто
     if (city) {
-        if(city===c_city_gb||c_city_usa||c_city_ua){
-            if (city===c_city_ua){
+        switch (city) {
+            case c_city_ua:
                 country = "Ukraine";
-            }else if(city === c_city_gb){
+                break;
+            case c_city_gb:
                 country = "England"
-            }else{
+                break;
+            case c_city_usa:
                 country = "USA"
-            }
-            alert(`You are living in the capital of ${country}`)
-        }else{
-            alert(`You live in ${city} city`)
+                break;
         }
+        let message = country ? `You are living in the capital of ${country}` : `You live in ${city} city`;
+
+        alert(message);
     }
     //////////////////////////////////////////////////////
     if(t_sport){
