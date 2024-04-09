@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //Дано ціле число (ввести через 'prompt').
+  //З'ясувати, чи просто воно (простим називається число, більше 1, що не має інших дільників, крім 1 і себе).
+  function isPrime(number) {
+    if (number <= 1) {
+      return false; // 0 і 1 не є простими числами
+    }
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+      if (number % i === 0) {
+        return false; // Знайдено дільник, число не є простим
+      }
+    }
+    return true; // Число є простим
+  }
+  let number =  prompt("Enter number:");
+  number = Number(number);
+  if (isNaN(number)) {
+    console.log('Please, enter correct number');
+  } else if (isPrime(number)) {
+    console.log(`${number} is prime`);
+  } else {
+    console.log(`${number} is not prime`);
+  }
+</script>
+</body>
+</html>
