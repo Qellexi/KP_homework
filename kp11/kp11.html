@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Дано ціле число N (ввести через prompt). Вивести всі цілі числа від 1 до 100, квадрат яких не перевищує числа N
+    number = prompt("Enter number:");
+    number = Number(number);
+
+    if (!isNaN(number) && number > 0) {
+        let message = 'Числа, квадрат яких не перевищує N: ';
+        for (let i = 1; i <= 100; i++) {
+            if (i * i <= number) {
+                message += `${i} `;
+            } else {
+                break;
+            }
+        }
+        alert(message);
+    } else {
+        alert('Please, enter correct number.');
+    }
+</script>
+</body>
+</html>
