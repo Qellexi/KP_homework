@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Дано масив з елементами різних типів.
+    //Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
+    let mixedArray = [1, "два", true, { name: "Об'єкт" }, [5, 6, 7], null, undefined, function()
+    { console.log('Функція'); }, 5, 10, 3];
+
+    function aver(){
+        let numberOnly = mixedArray.filter(item => typeof item === 'number')
+        let sum = 0;
+        for (let i =0; i<numberOnly.length; i++){
+            console.log(numberOnly[i]);
+            sum += numberOnly[i]
+        }
+        console.log(`Загальна сума: ${sum}`);
+        let average = sum/numberOnly.length;
+        return average;
+    }
+    console.log(`Середнє арифметичне: ${aver()}`);
+</script>
+</body>
+</html>
