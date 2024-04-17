@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KP13</title>
+</head>
+<body>
+<script>
+  //Написати функцію, яка приймає 1 параметр. Та складе значення з тим, що передали перший раз і т. д.
+  // Все це із замиканнями, наприклад:
+  //console.log(sum(4)); // 4
+  //console.log(sum(6)); // 10
+  //console.log(sum(10)); // 20
+  //console.log(sum(7)); // 27
+
+  //перший варіант
+  console.log("First:");
+  const number=[];
+  function sum1(p1){
+    number.push(p1);
+    return number.reduce(function(accumulator, currentValue) {
+      return accumulator + currentValue;
+    }, 0);
+  }
+  console.log(sum1(4)); // 4
+  console.log(sum1(6)); // 10
+  console.log(sum1(10)); // 20
+  console.log(sum1(7)); // 27
+
+  //другий варіант
+  console.log("Second:");
+  function par(p0){
+    let total = p0;
+    return function(y) {
+      total+= y;
+      return total;
+    };
+  }
+  const sum = par(0);
+  console.log(sum(4)); // 4
+  console.log(sum(6)); // 10
+  console.log(sum(10)); // 20
+  console.log(sum(7)); // 27
+</script>
+</body>
+</html>
