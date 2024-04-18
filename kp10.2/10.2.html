@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kp10.2</title>
+</head>
+<body>
+<script>
+//Створіть об'єкт, який матиме одну властивість з масивом об'єктів.
+//Які представляють контакти у вашій контактній книзі. Кожен об'єкт має містити ім'я,
+//номер телефону та адресу електронної пошти. Додайте метод для пошуку контакту за ім'ям та
+//метод для додавання нових контактів.
+const contactBook = {
+    contacts: [
+        {   name: 'John',
+            phone_number: "+3809676788160",
+            email: 'john_k@gmail.com'
+        },
+        {   name: 'Lydia',
+            phone_number: "+3809676788157",
+            email: 'lyd_k@gmail.com'
+        },
+        {   name: 'Petro',
+            phone_number: "+3809676788188",
+            email: 'petro_k@gmail.com'
+        },
+    ],
+    search: function () {
+        const input_name = prompt("Let us search a contact! Enter contact name: ");
+        const foundContact = this.contacts.find(i => i.name === input_name);
+
+        if (foundContact) {
+            console.log(`Name: ${foundContact.name}, Phone Number: ${foundContact.phone_number}, Email: ${foundContact.email}`);
+        } else {
+            console.log("Contact not found.");
+        }
+    },
+    addContact: function (){
+        let input_i_name = prompt("Now we will add contact! Enter name: ")
+        let input_i_phone = prompt("Enter phone number: ")
+        let input_i_email = prompt("Enter email: ")
+        this.contacts.push({ name: input_i_name, phone_number: input_i_phone, email: input_i_email});
+        console.log("New contact added:", input_i_name);
+    },
+    displayAllContacts: function() {
+        console.log("Complete Contact List:");
+        this.contacts.forEach(contact => {
+            console.log(`Name: ${contact.name}, Phone: ${contact.phone_number}, Email: ${contact.email}`);
+        });
+    },
+}
+    contactBook.search();
+    contactBook.addContact();
+    contactBook.displayAllContacts();
+</script>
+</body>
+</html>
