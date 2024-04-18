@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kp10.1</title>
+</head>
+<body>
+<script>
+    //Створіть об'єкт, що містить інформацію про користувача, таку як ім'я, вік, місце проживання тощо.
+    //Створіть метод об'єкту для отримання та відображення цих даних.
+    const user_info ={
+        name: 'Amelie',
+        lastname: 'Fibi',
+        age: 16,
+        location: 'Kyjiw',
+
+        displayInfo: function() {
+            console.log(`Ім'я: ${this.name},\nПрізвище: ${this.lastname},\nВік: ${this.age},\nМісце проживання: ${this.location}`);
+        }
+    }
+    user_info.displayInfo();
+</script>
+</body>
+</html>
