@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Redirect</title>
+    <script>
+        //На сторінці є дві кнопки. При натисканні на першу кнопку користувач повинен ввести в prompt посилання,
+        //при натисканні на другу – переадресовується на інший сайт (за раніше введеним посиланням).
+        let userLink = '';
+
+        function getUserLink() {
+            userLink = prompt("Please enter the URL:");
+            if (userLink) {
+                alert("Link saved: " + userLink);
+            }
+        }
+
+        function redirectToLink() {
+            if (userLink) {
+                window.location.href = userLink;
+            } else {
+                alert("No link saved. Please enter the URL .");
+            }
+        }
+    </script>
+</head>
+<body>
+<button onclick="getUserLink()">Enter URL</button>
+<button onclick="redirectToLink()">Go to URL</button>
+</body>
+</html>
