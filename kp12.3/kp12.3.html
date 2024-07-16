@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        li button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<ul id="taskList">
+    <li>Завдання 1 <button>Видалити</button></li>
+    <li>Завдання 2 <button>Видалити</button></li>
+    <li>Завдання 3 <button>Видалити</button></li>
+</ul>
+<input type="text" id="newTask" placeholder="Додати нове завдання">
+<button onclick="addTask()">Додати</button>
+
+<script>
+    document.getElementById('taskList').addEventListener('click', function(event) {
+        if (event.target.tagName === 'BUTTON') {
+            const li = event.target.parentElement;
+            li.remove();
+        }
+    });
+
+    function addTask() {
+        const newTaskInput = document.getElementById('newTask');
+        const taskText = newTaskInput.value.trim();
+        if (taskText !== '') {
+            const li = document.createElement('li');
+            li.textContent = taskText + ' ';
+            const button = document.createElement('button');
+            button.textContent = 'Видалити';
+            li.appendChild(button);
+            document.getElementById('taskList').appendChild(li);
+            newTaskInput.value = '';
+        }
+    }
+</script>
+</body>
+</html>
