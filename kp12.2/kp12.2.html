@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Click Handler</title>
+    <style>
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-container button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="button-container" id="buttonContainer">
+    <button>Кнопка 1</button>
+    <button>Кнопка 2</button>
+    <button>Кнопка 3</button>
+</div>
+<script>
+    document.getElementById('buttonContainer').addEventListener('click', function(event) {
+        if (event.target.tagName === 'BUTTON') {
+            alert('Клікнуто на кнопці: ' + event.target.textContent);
+        }
+    });
+</script>
+</body>
+</html>
