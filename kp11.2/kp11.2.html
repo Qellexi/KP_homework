@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Text Color</title>
+    <style>
+        #textBlock {
+            font-size: 24px;
+            color: black;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div id="textBlock">Це текстовий блок. Натисніть кнопку, щоб змінити колір тексту.</div>
+<button onclick="toggleTextColor()">Змінити колір тексту</button>
+
+<script>
+    let isOriginalColor = true;
+
+    function toggleTextColor() {
+        const textBlock = document.getElementById('textBlock');
+        if (isOriginalColor) {
+            textBlock.style.color = 'red';
+        } else {
+            textBlock.style.color = 'black';
+        }
+        isOriginalColor = !isOriginalColor;
+    }
+</script>
+</body>
+</html>
