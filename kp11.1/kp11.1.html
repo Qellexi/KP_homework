@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Таблиця Піфагора</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<table id="multiplicationTable"></table>
+
+<script>
+    function createMultiplicationTable(size) {
+        const table = document.getElementById('multiplicationTable');
+
+        for (let i = 0; i <= size; i++) {
+            const row = document.createElement('tr');
+
+            for (let j = 0; j <= size; j++) {
+                const cell = document.createElement(i === 0 || j === 0 ? 'th' : 'td');
+
+                if (i === 0 && j === 0) {
+                    cell.textContent = '';
+                } else if (i === 0) {
+                    cell.textContent = j;
+                } else if (j === 0) {
+                    cell.textContent = i;
+                } else {
+                    cell.textContent = i * j;
+                }
+
+                row.appendChild(cell);
+            }
+
+            table.appendChild(row);
+        }
+    }
+
+    createMultiplicationTable(10);
+</script>
+</body>
+</html>
