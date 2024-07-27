@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .contact-form h1 {
+            color: #d72d4e;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .contact-form textarea {
+            height: 100px;
+            resize: none;
+        }
+        .contact-form .optional-label {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            color: #999;
+            font-size: 12px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .success {
+            color: dimgrey;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="contact-form">
+    <h1>We would like to help you</h1>
+    <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name">
+        <div id="nameError" class="error">Please enter a valid name.</div>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Message"></textarea>
+        <div id="messageError" class="error">Message must be at least 5 characters long.</div>
+
+        <div class="optional-label">HOW TO ANSWER YOU?</div>
+
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone number">
+        <div id="phoneError" class="error">Please enter a valid phone number starting with +380.</div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email">
+        <div id="emailError" class="error">Please enter a valid email address.</div>
+
+        <button type="button" onclick="validateForm()">Send message</button>
+    </form>
+    <div id="successMessage" class="success">Your message was sent! Would you like to text more?</div>
+
+</div>
+<script>
+    //Доробити валідацію для надсилання повідомлення з використанням регулярних виразів:
+
+    //Поля:
+
+    //Name - обовьязкове текстове поле
+    //Message - текстове поле не меньше 5 символів
+    //Phone number - обовьязкове поле типу phone. З початком на +380
+    //Email - email обовьязково повинен мати @ та крапку
+    //Після відправки, в консоль відображаємо дані, які ввів користувач.
+    //Під час помилки показувати її під полем.
+
+    'use strict'
+
+    function checkName(regExp) {
+        const name = document.getElementById('name').value.trim();
+        if (!regExp.test(name)) {
+            document.getElementById('nameError').style.display = 'block';
+            return false;
+        } else {
+            document.getElementById('nameError').style.display = 'none';
+            return true;
+        }
+    }
+
+    function checkMsg(regExp) {
+        const message = document.getElementById('message').value.trim();
+        if (!regExp.test(message)) {
+            document.getElementById('messageError').style.display = 'block';
+            return false;
+        } else {
+            document.getElementById('messageError').style.display = 'none';
+            return true;
+        }
+    }
+
+    function checkPhone(regExp) {
+        const phone = document.getElementById('phone').value.trim();
+        if (!regExp.test(phone)) {
+            document.getElementById('phoneError').style.display = 'block';
+            return false;
+        } else {
+            document.getElementById('phoneError').style.display = 'none';
+            return true;
+        }
+    }
+
+    function checkEmail(regExp) {
+        const email = document.getElementById('email').value.trim();
+        if (!regExp.test(email)) {
+            document.getElementById('emailError').style.display = 'block';
+            return false;
+        } else {
+            document.getElementById('emailError').style.display = 'none';
+            return true;
+        }
+    }
+    function validateForm() {
+        const isNameValid = checkName(/[A-ZА-Яa-zа-я]/);
+        const isMsgValid = checkMsg(/.{5,}/);
+        const isPhoneValid = checkPhone(/^\+380\d{9}$/);
+        const isMailValid = checkEmail(/\.[^\s@]/);
+        if (isNameValid && isMsgValid && isPhoneValid && isMailValid) {
+            console.log({
+                name: document.getElementById('name').value,
+                message: document.getElementById('message').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            });
+            document.getElementById('successMessage').style.display = 'block';
+        } else {
+            document.getElementById('successMessage').style.display = 'none';
+        }
+    }
+    console.log("Cool!")
+
+
+</script>
+</body>
+</html>
