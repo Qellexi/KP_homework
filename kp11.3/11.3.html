@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Display</title>
+    <style>
+        #imageContainer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="imageContainer">
+    <button onclick="displayRandomImage()">Показати випадкове зображення</button>
+    <div id="randomImage"></div>
+</div>
+
+<script>
+    const images = [
+        'images1.png',
+        'images2.png',
+        'images3.png',
+        'images4.png',
+        'images5.png',
+        'images6.png',
+        'images7.png'
+    ];
+
+    function displayRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const imageContainer = document.getElementById('randomImage');
+        imageContainer.innerHTML = `<img src="${images[randomIndex]}" alt="Random Image">`;
+    }
+</script>
+</body>
+</html>
