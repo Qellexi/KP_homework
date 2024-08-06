@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Entity</title>
+</head>
+<body>
+<h1>Student Entity</h1>
+
+<div id="students"></div>
+
+<script>
+    class Student {
+        constructor(firstName, lastName, birthYear) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.birthYear = birthYear;
+            this.grades = [];
+            this.attendance = new Array(25).fill(null); // Масив відвідуваності на 25 елементів
+        }
+
+        // Метод для отримання віку студента
+        getAge() {
+            const currentYear = new Date().getFullYear();
+            return currentYear - this.birthYear;
+        }
+
+        // Метод для отримання середнього балу студента
+        getAverageGrade() {
+            if (this.grades.length === 0) return 0;
+            const sum = this.grades.reduce((acc, grade) => acc + grade, 0);
+            return sum / this.grades.length;
+        }
+
+        // Метод для відмітки присутності
+        present() {
+            const index = this.attendance.indexOf(null);
+            if (index !== -1) {
+                this.attendance[index] = true;
+            }
+        }
+
+        // Метод для відмітки відсутності
+        absent() {
+            const index = this.attendance.indexOf(null);
+            if (index !== -1) {
+                this.attendance[index] = false;
+            }
+        }
+
+        // Метод для отримання середньої відвідуваності
+        getAverageAttendance() {
+            const validAttendances = this.attendance.filter(item => item !== null);
+            if (validAttendances.length === 0) return 0;
+            const presentCount = validAttendances.filter(item => item === true).length;
+            return presentCount / validAttendances.length;
+        }
+
+        // Метод для підведення підсумків
+        summary() {
+            const averageGrade = this.getAverageGrade();
+            const averageAttendance = this.getAverageAttendance();
+
+            if (averageGrade > 90 && averageAttendance > 0.9) {
+                return "Молодець!";
+            } else if (averageGrade > 90 || averageAttendance > 0.9) {
+                return "Добре, але можна краще";
+            } else {
+                return "Редиска!";
+            }
+        }
+    }
+
+    // Функція для відображення інформації про студента
+    function displayStudentInfo(student, elementId) {
+        const studentInfo = document.createElement('div');
+        studentInfo.innerHTML = `
+                <h2>${student.firstName} ${student.lastName}</h2>
+                <p>Вік: ${student.getAge()}</p>
+                <p>Середній бал: ${student.getAverageGrade().toFixed(2)}</p>
+                <p>Середня відвідуваність: ${(student.getAverageAttendance() * 100).toFixed(2)}%</p>
+                <p>Підсумок: ${student.summary()}</p>
+            `;
+        document.getElementById(elementId).appendChild(studentInfo);
+    }
+
+    // Створення екземплярів студентів та перевірка методів
+    const student1 = new Student('Олександр', 'Іванов', 2000);
+    student1.grades.push(95, 85, 92);
+    student1.present();
+    student1.present();
+    student1.absent();
+    displayStudentInfo(student1, 'students');
+
+    const student2 = new Student('Марія', 'Петрова', 1998);
+    student2.grades.push(88, 90, 85);
+    student2.present();
+    student2.present();
+    student2.present();
+    displayStudentInfo(student2, 'students');
+
+    const student3 = new Student('Іван', 'Сидоров', 2001);
+    student3.grades.push(70, 75, 80);
+    student3.absent();
+    student3.absent();
+    student3.absent();
+    displayStudentInfo(student3, 'students');
+</script>
+</body>
+</html>
