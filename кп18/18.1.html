@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таймер відліку</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+        }
+        #timer {
+            font-size: 60px;
+            font-weight: bold;
+            color: #333;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .controls input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .controls button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Таймер відліку</h1>
+
+<div class="controls">
+    <input type="number" id="minutes" placeholder="Хвилини" min="0">
+    <input type="number" id="seconds" placeholder="Секунди" min="0" max="59">
+    <button id="startButton">Запустити таймер</button>
+</div>
+
+<div id="timer">00:00</div>
+
+<script>
+    let countdownTime;
+    let interval;
+
+    function startTimer(duration, display) {
+        let timer = duration, minutes, seconds;
+        interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+                display.textContent = "00:00";
+            }
+        }, 1000);
+    }
+
+    document.getElementById('startButton').addEventListener('click', function() {
+        const minutes = parseInt(document.getElementById('minutes').value) || 0;
+        const seconds = parseInt(document.getElementById('seconds').value) || 0;
+        countdownTime = (minutes * 60) + seconds;
+
+        if (interval) {
+            clearInterval(interval);
+        }
+
+        const display = document.querySelector('#timer');
+        startTimer(countdownTime, display);
+    });
+</script>
+
+</body>
+</html>
