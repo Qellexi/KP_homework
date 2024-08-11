@@ -1,0 +1,13 @@
+{
+  "name": "20_lec",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "watch": "babel src --out-dir dist --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3"
+  }
+}
